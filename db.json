@@ -1,9 +1,36 @@
 {
-    "articles": [
-        {
-            "id": 1,
-            "title": "文章标题",
-            "content": "# 这是标题\n\n这是**粗体**内容。\n\n- 列表项 1\n- 列表项 2\n\n这是一个[链接](https://example.com)。\n\n```javascript\nconsole.log('代码块');\n```"
-        }
-    ]
+  "users": [
+    {
+      "username": "Jane Doe",
+      "account": "000001",
+      "password": "123456",
+      "id": 2
+    },
+    {
+      "username": "bbb",
+      "account": "000002",
+      "password": "123456",
+      "id": 3
+    },
+    {
+      "username": "ccc",
+      "account": "123456",
+      "password": "123456",
+      "id": 4
+    }
+  ],
+  "articles": [
+    {
+      "id": 1,
+      "userId": 2,
+      "title": "项目开发总结报告",
+      "content": "# 项目概述\n\n本项目是一个基于Vue.js的文档管理系统，旨在提供高效的文档编辑和管理功能。\n\n## 项目背景\nfghgf\n**项目特点：**\n- 🚀 高性能的前端框架\n- 📝 所见即所得的编辑器\n- 🔐 完善的权限控制系统\n- 📱 响应式设计，支持移动端\n\n# 技术选型\n\n在技术选型方面，我们经过了充分的调研和评估。\n\n## 前端技术栈\n\n| 技术 | 版本 | 用途 |\n|------|------|------|\n| Vue.js | 3.4.0 | 核心框架 |\n| TypeScript | 5.0.0 | 类型检查 |\n| Vite | 4.0.0 | 构建工具 |\n| Element Plus | 2.3.0 | UI组件库 |\n\n## 后端技术栈\n\n```javascript\nconst techStack = {\n  runtime: 'Node.js 18.x',\n  framework: 'Express 4.x',\n  database: 'MongoDB 6.x',\n  orm: 'Mongoose 7.x',\n  auth: 'JWT',\n  testing: 'Jest + Supertest'\n};\n```\n\n### 选择理由\n\n1. **Vue.js 3.0** - 提供了更好的性能和开发体验\n2. **TypeScript** - 增强代码的可维护性和可读性\n3. **MongoDB** - 灵活的文档存储，适合内容管理\n\n> 💡 **提示：** 选择合适的技术栈是项目成功的关键因素之一。\n\n# 开发进度\n\n项目从2024年1月启动，目前已进行了3个月的开发。\n\n## 第一阶段（1月-2月）\n\n### 已完成功能\n- [x] 用户认证系统\n- [x] 基础文档CRUD操作\n- [x] 文档分类管理\n- [x] 搜索功能\n\n### 遇到的挑战\n1. **性能优化问题**\n   - 大量文档加载时的性能瓶颈\n   - 解决方案：实现虚拟滚动和分页加载\n\n2. **权限控制复杂性**\n   - 多层级权限管理的实现难度\n   - 解决方案：采用RBAC权限模型\n\n## 第二阶段（3月-4月）\n\n### 当前进展\n- 🔄 实时协作编辑功能开发中\n- 🔄 文档版本管理系统\n- 📋 移动端适配（计划中）\n\n### 性能指标\n\n```bash\n\n# 性能测试结果\nPage Load Time: 1.2s\nFirst Contentful Paint: 0.8s\nLargest Contentful Paint: 1.5s\nCumulative Layout Shift: 0.02\n```\n\n# 团队协作\n\n## 团队成员\n\n- **张三** - 项目经理\n  - 负责项目整体规划和进度管理\n  - 邮箱：zhangsan@company.com\n\n- **李四** - 前端开发工程师\n  - 负责Vue.js前端开发\n  - GitHub：[@lisi](https://github.com/lisi)\n\n- **王五** - 后端开发工程师\n  - 负责Node.js后端开发\n  - 专长：API设计、数据库优化\n\n## 开发流程\n\n我们采用了敏捷开发方法，具体流程如下：\n\n1. **需求分析** - 产品经理整理需求文档\n2. **技术设计** - 架构师设计技术方案\n3. **开发实现** - 开发团队并行开发\n4. **测试验收** - QA团队进行功能测试\n5. **部署上线** - DevOps团队负责部署\n\n### 代码规范\n\n我们制定了严格的代码规范：\n\n```typescript\n// 示例：Vue组件规范\ninterface UserInfo {\n  id: number;\n  name: string;\n  email: string;\n  role: 'admin' | 'user' | 'guest';\n}\n\nconst UserProfile: FC<{user: UserInfo}> = ({ user }) => {\n  return (\n    <div className=\"user-profile\">\n      <h3>{user.name}</h3>\n      <p>{user.email}</p>\n    </div>\n  );\n};\n```\n\n# 测试与部署\n\n## 测试策略\n\n### 单元测试\n- 使用Jest进行组件单元测试\n- 测试覆盖率目标：>90%\n- 关键业务逻辑必须有测试用例\n\n### 集成测试\n- API接口测试\n- 数据库操作测试\n- 第三方服务集成测试\n\n### 端到端测试\n- 使用Cypress进行E2E测试\n- 覆盖主要用户场景\n\n## 部署环境\n\n| 环境 | 域名 | 服务器 | 数据库 |\n|------|------|--------|---------|\n| 开发 | dev.example.com | 阿里云ECS | MongoDB Atlas |\n| 测试 | test.example.com | 腾讯云CVM | 自建MongoDB |\n| 生产 | www.example.com | AWS EC2 | AWS DocumentDB |\n\n### 部署脚本\n\n```bash\n#!/bin/bash\n\n# 部署脚本示例\necho \"开始部署...\"\n\n# 拉取最新代码\ngit pull origin main\n\n# 安装依赖\nnpm install\n\n# 构建项目\nnpm run build\n\n# 重启服务\npm2 restart all\n\necho \"部署完成！\"\n```\n\n# 未来规划\n\n## 短期目标（Q2 2024）\n\n- [ ] 完成移动端适配\n- [ ] 实现离线编辑功能\n- [ ] 添加多语言支持\n- [ ] 优化搜索算法\n\n## 中期目标（Q3-Q4 2024）\n\n- [ ] AI写作助手功能\n- [ ] 文档自动翻译\n- [ ] 数据分析dashboard\n- [ ] 第三方系统集成\n\n## 长期愿景\n\n> 我们希望打造一个**智能化**、**协作化**的文档管理平台，让知识管理变得更加高效和便捷。\n\n### 创新功能设想\n\n1. **AI内容推荐**\n   - 基于用户行为的智能推荐\n   - 相关文档自动关联\n\n2. **语音输入**\n   - 支持语音转文字\n   - 多语言语音识别\n\n3. **区块链存证**\n   - 文档版权保护\n   - 不可篡改的版本历史\n\n---\n\n**项目总结：** 通过团队的共同努力，我们成功构建了一个功能丰富、性能优异的文档管理系统。虽然过程中遇到了许多挑战，但最终都得到了妥善解决。\n\n*最后更新时间：2024年3月15日*\n\n**联系方式：** 如有问题，请联系项目组 [project-team@company.com](mailto:project-team@company.com)"
+    },
+    {
+      "id": 2,
+      "userId": 3,
+      "title": "学习笔记",
+      "content": "# Vue.js 3.0 学习笔记\n\n## 基础概念\n\nVue.js 3.0 是一个用于构建用户界面的渐进式JavaScript框架。\n\n### 核心特性\n- 响应式数据绑定\n- 组件化开发\n- 虚拟DOM\n- 指令系统\n\n# Composition API\n\n## setup函数\n\n```javascript\nimport { ref, reactive, computed } from 'vue';\n\nexport default {\n  setup() {\n    const count = ref(0);\n    const increment = () => count.value++;\n    \n    return {\n      count,\n      increment\n    };\n  }\n};\n```\n\n# 响应式系统\n\n## ref vs reactive\n\n| 类型 | 用途 | 示例 |\n|------|------|------|\n| ref | 基本类型 | `const count = ref(0)` |\n| reactive | 对象类型 | `const state = reactive({})` |\n\n> 记住：ref需要通过.value访问，reactive可以直接访问属性。"
+    }
+  ]
 }

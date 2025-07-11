@@ -1,22 +1,23 @@
 .body {
     width: 100%;
-    height: 100vh;
-    /* display: flex; */
+    min-height: 100vh;
+    height: auto;
     justify-content: center;
     align-items: center;
     font-family: sans-serif;
     background-color: #ecf0f3;
-    overflow: hidden;
+
 }
 
-.article-container {
+
+/* .article-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+} */
 
 .title {
     text-align: center;
@@ -36,9 +37,7 @@ h2 {
     width: 60%;
     height: auto;
     margin: 0 auto;
-    /* 让内容在页面中居中显示 */
-    max-width: 800px;
-    /* 可选：设置最大宽度避免在超大屏幕上过宽 */
+    max-width: 900px;
     border-radius: 12px;
     background-color: #f9f9f9;
     box-shadow: 1px 10px 20px #d1d9e6, -1px -10px 20px #d1d9e6;
@@ -71,13 +70,14 @@ h2 {
     background-color: #f9f9f9;
     border: 2px solid #003153;
     border-radius: 4px;
-    /* display: flex; */
-    /* flex-direction: column; */
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
 .edit-textarea {
     width: 100%;
+    height: auto;
     min-height: 100px;
     /* padding: 10px; */
     border: 1px solid #ddd;
