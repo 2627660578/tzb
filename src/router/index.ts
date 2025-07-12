@@ -52,7 +52,7 @@ router.beforeEach((to, from, next) => {
     next({ name: 'Home' });
     return;
   }
-  
+
   // 检查目标路由是否需要认证
   if (to.meta.requiresAuth && !isLoggedIn) {
     // 如果用户未登录，则重定向到登录页面

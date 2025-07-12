@@ -1,6 +1,7 @@
 <template>
     <div class="loading-container">
       <p>正在加载，请稍候...</p>
+      
       <!-- 您可以在这里添加一个加载动画 -->
     </div>
   </template>

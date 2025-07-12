@@ -40,7 +40,7 @@
     } else {
       accountError.value = ''
     }
-    if (account.value.length < 6 || account.value.length > 20) {
+    if (account.value.length < 5 || account.value.length > 20) {
       accountError.value = '账号长度必须在6到20位之间'
     }
   }
@@ -51,7 +51,7 @@
     } else {
       passwordError.value = ''
     }
-    if (password.value.length < 6 || password.value.length > 20) {
+    if (password.value.length < 5 || password.value.length > 20) {
       passwordError.value = '密码长度必须在6到20位之间'
     }
   }
@@ -78,31 +78,42 @@
     }
   
     try {
-      const response = await axios.get('http://localhost:3000/users', {
-        params: {
-          account:account.value,
-          password:password.value
-        }
-        
+      const response = await axios.post('/api/usercenter/v1/user/login', {
+        mobile:account.value,
+        password:password.value
       })
-      console.log(response)
-      console.log(response.data.length)
-  
-      if (response.data.length > 0) {
-        alert('登录成功')
-        // isLoggedin.value = true
-        mainStore.login(response.data[0])
-        router.push('/')
-      }
-      else {
-        alert('账号或密码错误')
-        console.log(account.value)
-        console.log(password.value)
-        event.preventDefault()
+      
+      // 3. 检查响应状态和 accessToken 是否存在
+      if (response.status === 200 && response.data.accessToken) {
+        alert('登录成功');
+        
+        // 4. 调用 store 中的 loginWithToken action
+        mainStore.loginWithToken({ accessToken: response.data.accessToken });
+
+        // 5. 跳转到首页，让 App.vue 的 watch 接管后续流程
+        router.push('/');
+      } else {
+        // 处理成功但响应数据不符合预期的情况
+        alert('登录失败：服务器返回数据异常。');
+        event.preventDefault();
       }
     }
-    catch (error) {
-      console.log("登录时出错: ", error)
+    catch (error:any) {
+       // 6. 优化错误处理
+      if (error.response) {
+        // 服务器返回了错误状态码 (如 400, 401, 404)
+        console.error("登录失败: ", error.response.data);
+        alert('登录失败: ' + (error.response.data.message || '账号或密码错误'));
+      } else if (error.request) {
+        // 请求已发出，但没有收到任何响应
+        console.error("服务器无响应: ", error.request);
+        alert('登录失败: 服务器无响应，请检查网络连接。');
+      } else {
+        // 在设置请求时触发了一个错误
+        console.error("请求设置错误: ", error.message);
+        alert('登录失败: 请求发送失败。');
+      }
+      event.preventDefault();
     }
   }
   
