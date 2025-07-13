@@ -184,5 +184,5 @@ watch(() => props.articleId, (newId) => {
 </template>
 
 <style scoped>
-@import "../style/ShowArticle.css"
+@import "../../style/ShowArticle.css";
 </style>

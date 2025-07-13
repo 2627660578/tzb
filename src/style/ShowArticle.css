@@ -2,6 +2,7 @@
     width: 100%;
     min-height: 100vh;
     height: auto;
+    margin-top: 0px;
     justify-content: center;
     align-items: center;
     font-family: sans-serif;
@@ -20,9 +21,12 @@
 } */
 
 .title {
+    margin-top: 0px;
+    padding-top: 20px;
     text-align: center;
     color: #333;
-    margin-bottom: 30px;
+    
+    /* margin-bottom: 20px; */
 
 }
 

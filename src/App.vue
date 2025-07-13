@@ -2,6 +2,7 @@
 import { watch } from 'vue'; // 1. 导入 watch
 import { useMainStore } from './stores/message';
 import { useRouter, useRoute } from 'vue-router'; // 2. 导入 useRoute
+import navbar from './views/navbar.vue';
 
 const store = useMainStore();
 const router = useRouter();
@@ -43,14 +44,21 @@ watch(() => store.isLoggedin, (isLoggedIn) => {
 </script>
 
 <template>
+  <navbar/>
   <router-view />
 </template>
 
-<style scoped>
-#app {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
+<style >
+/* *,
+*::before,
+*::after {
+  box-sizing: border-box;
+} */
+
+body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
 }
 </style>

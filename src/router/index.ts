@@ -10,7 +10,10 @@ const baseRoutes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Home', // 给根路径一个名字
-    component: () => import('../views/Home.vue') // 指定一个组件来渲染
+    component: () => import('../views/Home.vue'), // 指定一个组件来渲染
+    meta: {
+      requiresAuth: true // <-- 核心修改：将根路径标记为需要认证
+    }
   },
   {
     path: '/article', // 添加一个对 /article 的重定向，防止用户手动输入
