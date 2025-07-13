@@ -3,6 +3,14 @@ import { ref,watch, nextTick } from 'vue'
 import axios from 'axios'
 import { marked } from 'marked'
 
+// 1. 定义组件可以发出的事件
+const emit = defineEmits(['close-editor']);
+
+// 2. 定义一个方法来触发事件
+const closeEditor = () => {
+  emit('close-editor');
+};
+
 // 定义 props 来接收父组件传递的文章 ID
 const props = defineProps<{
   articleId: string | number
@@ -135,52 +143,61 @@ watch(() => props.articleId, (newId) => {
 </script>
 
 <template>
-  <div class="body">
-    <h1 class="title">{{ article?.title || (loading ? '加载中...' : '加载失败') }}</h1>
-    <div class="article-content">
-      <div v-if="loading" class="loading">
-        正在加载文章...
-      </div>
+   <div class="par-container">
+      <!-- 4. 添加关闭按钮，并绑定点击事件 -->
+    <button @click="closeEditor" class="close-button" title="关闭编辑">
+      &times;
+    </button>
 
-      <div v-else-if="article && paragraphs.length > 0" class="paragraphs-container">
-        <div 
-          v-for="paragraph in paragraphs" 
-          :key="paragraph.id" 
-          class="paragraph-wrapper"
-        >
-          <!-- 显示模式 -->
+    <div class="body">
+      <h1 class="title">{{ article?.title || (loading ? '加载中...' : '加载失败') }}</h1>
+      <div class="article-content">
+        <div v-if="loading" class="loading">
+          正在加载文章...
+        </div>
+
+        <div v-else-if="article && paragraphs.length > 0" class="paragraphs-container">
           <div 
-            v-if="editingParagraph !== paragraph.id" 
-            class="paragraph" 
-            @click="startEdit(paragraph.id)"
-            title="点击编辑"
+            v-for="paragraph in paragraphs" 
+            :key="paragraph.id" 
+            class="paragraph-wrapper"
           >
-            <div v-html="paragraph.renderedContent" class="markdown-content"></div>
-          </div>
+            <!-- 显示模式 -->
+            <div 
+              v-if="editingParagraph !== paragraph.id" 
+              class="paragraph" 
+              @click="startEdit(paragraph.id)"
+              title="点击编辑"
+            >
+              <div v-html="paragraph.renderedContent" class="markdown-content"></div>
+            </div>
 
-          <!-- 编辑模式 -->
-          <div v-else class="edit-mode">
-            <textarea 
-              v-model="editingContent" 
-              class="edit-textarea" 
-              @keydown="handleKeydown" 
-              rows="10" 
-              placeholder="输入 Markdown 内容..." 
-              ref="editTextarea"
-            />
-            <div class="edit-buttons">
-              <button @click="saveParagraph(paragraph.id)" class="save-btn">确定 (Ctrl+Enter)</button>
-              <button @click="cancelEdit" class="cancel-btn">取消 (Esc)</button>
+            <!-- 编辑模式 -->
+            <div v-else class="edit-mode">
+              <textarea 
+                v-model="editingContent" 
+                class="edit-textarea" 
+                @keydown="handleKeydown" 
+                rows="10" 
+                placeholder="输入 Markdown 内容..." 
+                ref="editTextarea"
+              />
+              <div class="edit-buttons">
+                <button @click="saveParagraph(paragraph.id)" class="save-btn">确定 (Ctrl+Enter)</button>
+                <button @click="cancelEdit" class="cancel-btn">取消 (Esc)</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      
-      <div v-else class="error">
-        文章加载失败或内容为空，请刷新页面重试。
+        
+        <div v-else class="error">
+          文章加载失败或内容为空，请刷新页面重试。
+        </div>
       </div>
     </div>
-  </div>
+   </div>
+
+  
 </template>
 
 <style scoped>

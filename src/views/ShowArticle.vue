@@ -18,7 +18,7 @@
     <Transition name="slide-fade">
       <!-- 仅在编辑器可见且文章ID有效时显示 Par 组件 -->
       <div class="par-wrapper" v-if="isEditorVisible && articleId" ref="parWrapperRef">
-        <Par :article-id="articleId" />
+        <Par :article-id="articleId" @close-editor="handleCloseEditor"  />
       </div>
     </Transition>
 
@@ -41,6 +41,17 @@ const handleRequestEdit = () => {
   isEditorVisible.value = true;
 };
 
+// 1. 新增一个处理函数，用于关闭编辑器
+const handleCloseEditor = () => {
+    isEditorVisible.value = false;
+      // 关键修复：重置由拖动操作添加的内联样式
+    if (chatWrapperRef.value) {
+        chatWrapperRef.value.style.width = ''; // 移除内联宽度，让CSS类生效
+    }
+    if (parWrapperRef.value) {
+        parWrapperRef.value.style.width = ''; // 同理，也重置右侧面板
+    }
+};
 // 使用 watchEffect 来响应路由参数的变化
 // 当 route.params.id 变化时，这个函数会自动重新运行
 watchEffect(() => {
