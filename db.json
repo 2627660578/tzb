@@ -32,5 +32,73 @@
       "title": "学习笔记",
       "content": "# Vue.js 3.0 学习笔记\n\n## 基础概念\n\nVue.js 3.0 是一个用于构建用户界面的渐进式JavaScript框架。\n\n### 核心特性\n- 响应式数据绑定\n- 组件化开发\n- 虚拟DOM\n- 指令系统\n\n# Composition API\n\n## setup函数\n\n```javascript\nimport { ref, reactive, computed } from 'vue';\n\nexport default {\n  setup() {\n    const count = ref(0);\n    const increment = () => count.value++;\n    \n    return {\n      count,\n      increment\n    };\n  }\n};\n```\n\n# 响应式系统\n\n## ref vs reactive\n\n| 类型 | 用途 | 示例 |\n|------|------|------|\n| ref | 基本类型 | `const count = ref(0)` |\n| reactive | 对象类型 | `const state = reactive({})` |\n\n> 记住：ref需要通过.value访问，reactive可以直接访问属性。"
     }
+  ],
+  "conversations": [
+    {
+      "id": 101,
+      "userId": 2,
+      "title": "关于项目报告的讨论",
+      "createdAt": "2025-07-22T10:00:00Z"
+    },
+    {
+      "id": 102,
+      "userId": 2,
+      "title": "Vue 3 技术选型",
+      "createdAt": "2025-07-22T11:30:00Z"
+    },
+    {
+      "id": 103,
+      "userId": 3,
+      "title": "学习笔记的疑问",
+      "createdAt": "2025-07-22T14:00:00Z"
+    }
+  ],
+  "messages": [
+    {
+      "id": 1001,
+      "conversationId": 101,
+      "sender": "user",
+      "text": "你好，我想讨论一下项目开发总结报告。",
+      "files": [],
+      "timestamp": "2025-07-22T10:00:10Z"
+    },
+    {
+      "id": 1002,
+      "conversationId": 101,
+      "sender": "bot",
+      "text": "好的，Jane Doe。关于项目报告，您有什么具体问题吗？",
+      "files": [],
+      "timestamp": "2025-07-22T10:00:25Z"
+    },
+    {
+      "id": 1003,
+      "conversationId": 101,
+      "sender": "user",
+      "text": "我上传了报告的草稿，请帮我检查一下技术选型这部分是否合理。",
+      "files": [
+        {
+          "name": "项目报告草稿_v1.docx",
+          "size": 15728,
+          "path": "uploads/project_report_draft_v1.docx"
+        }
+      ],
+      "timestamp": "2025-07-22T10:01:05Z"
+    },
+    {
+      "id": 1004,
+      "conversationId": 101,
+      "sender": "bot",
+      "text": "已收到文件。分析中... 技术选型部分看起来很全面，覆盖了前后端的主要技术栈。Vue 3 和 TypeScript 的组合是现代前端开发的优秀实践。",
+      "files": [],
+      "timestamp": "2025-07-22T10:01:45Z"
+    },
+    {
+      "id": 1005,
+      "conversationId": 102,
+      "sender": "user",
+      "text": "我们来聊聊 Vue 3 的 Composition API。",
+      "files": [],
+      "timestamp": "2025-07-22T11:30:15Z"
+    }
   ]
 }
